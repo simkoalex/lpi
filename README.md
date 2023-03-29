@@ -32,6 +32,7 @@ riešte vo svojom repozitári v aplikácii
 |  4 | [Dôkazy a výrokovologické tablá](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr04.pdf) | [NNF a CNF](prakticke/pu04) |
 |  5 | [Korektnosť a úplnosť výrokovologických tabiel](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr05.pdf) | [Tableau](prakticke/pu05) |
 |  6 | | [TableauBuilder](prakticke/pu06) |
+|  7 | | [Hamiltonovská kružnica](prakticke/pu07) |
 
 
 Návody a dokumenty
