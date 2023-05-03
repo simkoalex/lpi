@@ -37,7 +37,7 @@ riešte vo svojom repozitári v aplikácii
 |  9 | [Tablá pre kvantifikátory. Viackvantifikátorové tvrdenia](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr08.pdf) | [SAT solver](prakticke/pu09) |
 | 10 | [Funkčné symboly. Tablá s rovnosťou](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr09.pdf) | [FolFormula](prakticke/pu10) |
 | 11 | [Korektnosť tabiel. Explicitné definície. Unifikácia](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr10.pdf) | |
-| 12 | [Rezolvencia](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr11.pdf) | |
+| 12 | [Rezolvencia](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr11.pdf) | [Vlk, koza, kapusta](prakticke/pu11) |
 
 Návody a dokumenty
 ------------------
