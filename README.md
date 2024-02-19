@@ -19,5 +19,6 @@ riešte vo svojom repozitári v aplikácii
 Návody a dokumenty
 ------------------
 
+* [Poznámky z prednášok](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/poznamky-z-prednasok.pdf)
 * [Pravidlá pre úlohy](http://dai.fmph.uniba.sk/w/Course:Logic_for_CS/sk#pravidla-uloh)
 * [Návod na otváranie teoretických cvičení a úloh](teoreticke-ain#krátky-návod) (AIN)
