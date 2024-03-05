@@ -4,7 +4,7 @@
     "2": {
       "id": 2,
       "type": "text",
-      "data": "## Cvičenie 3.:cnt[a]\n:small[:icon[source]\nZbierka:\n:xref[3.2.1]{.exbook label=\"úloha\"},\n:xref[3.2.2]{.exbook label=\"príklad\"}.]\n\nMajme výrokovologickú teóriu $T = \\{ A_1, A_2, A_3 \\}$, kde\n\n$$\n  \\begin{aligned}\n    %A_1 =& \\bigl(\\FTAB \\limpl (\\FTAB \\lor \\FSA)\\bigr) , \\\\\n    A_1 =& \\bigl(\\FTAB \\limpl (\\FFA \\lor \\FSA)\\bigr) , \\\\\n    A_2 =& (\\neg \\FTAB \\lor \\neg \\FSA) , \\\\\n    A_3 =& (\\neg \\FSA \\limpl \\FFA)\n  \\end{aligned}\n$$\n\na formuly\n\n$$\n  \\begin{aligned}\n    X_1 &= (\\FTAB \\limpl \\FFA),\\\\\n    X_2 &= \\neg \\FSA,\\\\\n    X_3 &= (\\lnot \\FSA \\land \\lnot \\FFA).\n  \\end{aligned}\n$$",
+      "data": "## Cvičenie 3.:cnt[a]\n:small[:icon[source]\nZbierka:\n:xref[3.1.1]{.exbook label=\"úloha\"},\n:xref[3.1.2]{.exbook label=\"príklad\"}.]\n\nMajme výrokovologickú teóriu $T = \\{ A_1, A_2, A_3 \\}$, kde\n\n$$\n  \\begin{aligned}\n    %A_1 =& \\bigl(\\FTAB \\limpl (\\FTAB \\lor \\FSA)\\bigr) , \\\\\n    A_1 =& \\bigl(\\FTAB \\limpl (\\FFA \\lor \\FSA)\\bigr) , \\\\\n    A_2 =& (\\neg \\FTAB \\lor \\neg \\FSA) , \\\\\n    A_3 =& (\\neg \\FSA \\limpl \\FFA)\n  \\end{aligned}\n$$\n\na formuly\n\n$$\n  \\begin{aligned}\n    X_1 &= (\\FTAB \\limpl \\FFA),\\\\\n    X_2 &= \\neg \\FSA,\\\\\n    X_3 &= (\\lnot \\FSA \\land \\lnot \\FFA).\n  \\end{aligned}\n$$",
       "idCounter": 0,
       "comments": {
         "ids": [],
@@ -74,7 +74,7 @@
     "27": {
       "id": 27,
       "type": "text",
-      "data": "## Cvičenie 3.:cnt[a]\n:small[:icon[source] Zbierka: :xref[4.1.1]{.exbook label=\"príklad\"}.]\n\nNa základe nižšie uvedenej pravdivostnej tabuľky rozhodnite, či nasledujúca formula v jazyku $\\Lang$,\nkde $\\Preds = \\{\\sym{loves}^2\\}$ a $\\Consts = \\{\\sym{P}$, $\\sym{L}\\}$ je\ni. tautológia, ii. splniteľná, iii. falzifikovateľná, iv. nesplniteľná.\nRozhodnite o **všetkých** uvedených vlastnostiach\na rozhodnutia **zdôvodnite** na základe definície príslušnej vlastnosti.\n\n$$\nX=\\bigl((\\neg \\sym{loves}(\\sym{P},\\sym{L}) \\limpl \\neg \\sym{loves}(\\sym{L},\\sym{P}))\n    \\land (\\sym{loves}(\\sym{P},\\sym{L}) \\lor \\sym{loves}(\\sym{L},\\sym{P}))\\bigr)\n$$\n\nOznačme:  \n$X_1=(\\neg \\sym{loves}(\\sym{P},\\sym{L}) \\limpl \\neg \\sym{loves}(\\sym{L},\\sym{P}))$  \n$X_2=(\\sym{loves}(\\sym{P},\\sym{L}) \\lor \\sym{loves}(\\sym{L},\\sym{P}))$\n\n:::div{.table.table-truth}\n\n||$\\ \\sym{loves}(\\sym{P},\\sym{L})\\ $ | $\\ \\sym{loves}(\\sym{L},\\sym{P})\\ $ |$\\ \\neg \\sym{loves}(\\sym{P},\\sym{L})\\ $ | $\\ \\neg \\sym{loves}(\\sym{L},\\sym{P})\\ $ | $\\ X_1\\ $| $\\ X_2\\ $ | $\\ X\\ $ |\n|:-----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|\n|$v_1$|$t$|$t$|$\\npentails$|$\\npentails$|$\\pentails$|$\\pentails$|$\\pentails$|\n|$v_2$|$t$|$f$|$\\npentails$|$\\pentails$|$\\pentails$|$\\pentails$|$\\pentails$|\n|$v_3$|$f$|$t$|$\\pentails$|$\\npentails$|$\\npentails$|$\\pentails$|$\\npentails$|\n|$v_4$|$f$|$f$|$\\pentails$|$\\pentails$|$\\pentails$|$\\npentails$|$\\npentails$|\n:::",
+      "data": "## Cvičenie 3.:cnt[a]\n:small[:icon[source] Zbierka: :xref[4.1.2]{.exbook label=\"úloha\"}, :xref[4.1.1]{.exbook label=\"príklad\"}.]\n\nNa základe nižšie uvedenej pravdivostnej tabuľky rozhodnite, či nasledujúca formula v jazyku $\\Lang$,\nkde $\\Preds = \\{\\sym{loves}^2\\}$ a $\\Consts = \\{\\sym{P}$, $\\sym{L}\\}$ je\ni. tautológia, ii. splniteľná, iii. falzifikovateľná, iv. nesplniteľná.\nRozhodnite o **všetkých** uvedených vlastnostiach\na rozhodnutia **zdôvodnite** na základe definície príslušnej vlastnosti.\n\n$$\nX=\\bigl((\\neg \\sym{loves}(\\sym{P},\\sym{L}) \\limpl \\neg \\sym{loves}(\\sym{L},\\sym{P}))\n    \\land (\\sym{loves}(\\sym{P},\\sym{L}) \\lor \\sym{loves}(\\sym{L},\\sym{P}))\\bigr)\n$$\n\nOznačme:  \n$X_1=(\\neg \\sym{loves}(\\sym{P},\\sym{L}) \\limpl \\neg \\sym{loves}(\\sym{L},\\sym{P}))$  \n$X_2=(\\sym{loves}(\\sym{P},\\sym{L}) \\lor \\sym{loves}(\\sym{L},\\sym{P}))$\n\n:::div{.table.table-truth}\n\n||$\\ \\sym{loves}(\\sym{P},\\sym{L})\\ $ | $\\ \\sym{loves}(\\sym{L},\\sym{P})\\ $ |$\\ \\neg \\sym{loves}(\\sym{P},\\sym{L})\\ $ | $\\ \\neg \\sym{loves}(\\sym{L},\\sym{P})\\ $ | $\\ X_1\\ $| $\\ X_2\\ $ | $\\ X\\ $ |\n|:-----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|\n|$v_1$|$t$|$t$|$\\npentails$|$\\npentails$|$\\pentails$|$\\pentails$|$\\pentails$|\n|$v_2$|$t$|$f$|$\\npentails$|$\\pentails$|$\\pentails$|$\\pentails$|$\\pentails$|\n|$v_3$|$f$|$t$|$\\pentails$|$\\npentails$|$\\npentails$|$\\pentails$|$\\npentails$|\n|$v_4$|$f$|$f$|$\\pentails$|$\\pentails$|$\\pentails$|$\\npentails$|$\\npentails$|\n:::",
       "idCounter": 0,
       "comments": {
         "ids": [],
@@ -104,7 +104,7 @@
     "30": {
       "id": 30,
       "type": "text",
-      "data": ":icon[write] **a)**\nAk $T \\pentails (X \\limpl Y)$,\ntak $T \\npentails X$ alebo $T \\pentails Y$.\n\n**Riešenie:** ...\n",
+      "data": ":icon[write] **a)**\nAk $T \\pentails (X \\limpl Y)$,\ntak $T \\npentails X$ alebo $T \\pentails Y$.\n\n**Riešenie:** …\n",
       "idCounter": 0,
       "comments": {
         "ids": [],
@@ -114,7 +114,7 @@
     "31": {
       "id": 31,
       "type": "text",
-      "data": ":icon[write] **b)**\nAk $T \\pentails (X \\limpl Y)$,\ntak $T \\pentails \\neg X$ alebo $T \\pentails Y$.\n\n**Riešenie:** ...",
+      "data": ":icon[write] **b)**\nAk $T \\pentails (X \\limpl Y)$,\ntak $T \\pentails \\neg X$ alebo $T \\pentails Y$.\n\n**Riešenie:** …",
       "idCounter": 0,
       "comments": {
         "ids": [],
