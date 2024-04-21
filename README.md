@@ -35,6 +35,7 @@ riešte vo svojom repozitári v aplikácii
 |  7 | | [Hamiltonovská kružnica](prakticke/pu07) |
 |  8 | [Kvantifikátory](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr07.pdf) | [watched literals](prakticke/pu08) |
 |  9 | [Tablá pre kvantifikátory. Viackvantifikátorové tvrdenia](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr08.pdf) | [SAT solver](prakticke/pu09) |
+| 10 | [Funkčné symboly. Tablá s rovnosťou](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr09.pdf) | |
 
 Návody a dokumenty
 ------------------
