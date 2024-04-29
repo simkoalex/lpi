@@ -1,0 +1,420 @@
+{
+  "versionNumber": 1,
+  "cells": {
+    "1": {
+      "id": 1,
+      "type": "text",
+      "data": "::::header\n:::hgroup\n::p[Logika pre informatikov]{.h2.text-muted}\n# 10. teoretické cvičenie\n:::\n\n:::div{.dl-indented}\n:icon[diagram-2-fill]{.text-primary} Vetva repozitára\n: `tc10`\n: :strong[[:icon[arrow-clockwise] Otvoriť toto cvičenie v správnej vetve](../../tc10/teoreticke-ain/tc10.workbook)]\n\n:icon[save-fill]{.text-success} Uloženie riešenia do vetvy\n: Stlačte :span[Merge changes]{.border.border-success.text-success.p-1.rounded} na hornej lište.\n: **Uložte svoje riešenie pred zavretím karty prehliadača alebo odchodom na inú stránku!**\n\n:icon[help] Návod\n: Použitie aplikácie Logic Workbook: na konci hárka pre [tc01](tc01.workbook).\n\n:icon[envelope-at-fill]{.text-primary} Kontakt na vyučujúcich\n: `lpi-team` :icon[at] `lists.dai.fmph.uniba.sk`.\n:::\n::::\n::::details\n::summary[:icon[help] **Tabuľka symbolov** používaných nižšie a ich $\\TeX$ového zápisu]\n:::div{.table.small.table-sm.overflow-auto}\n| Symbol | TeX | Význam | Symbol | TeX | Význam | Symbol | TeX | Význam |\n|:------:|:----|:-------|:------:|:----|:-------|:------:|:----|:-------|\n| ∧ | `\\land` | konjunkcia | $\\Lang$ | `\\Lang` | jazyk | $\\models$ | `\\models` | pravdivosť v štruktúre |\n| ∨ | `\\lor` | disjunkcia | $\\Atoms$ | `\\Atoms` | množina atómov jazyka $\\Lang$ | $\\nmodels$ | `\\nmodels` | nepravdivosť v štruktúre |\n| → | `\\limpl` | implikácia | $\\Consts$ | `\\Consts` | množina konštánt jazyka $\\Lang$ | $\\pmodels$ | `\\pmodels` | pravdivosť v ohodnotení (<em>p</em>ropozičná) |\n| ↔ | `\\lequiv` | ekvivalencia | $\\Preds$ | `\\Preds` | množina predikátov jazyka $\\Lang$ | $\\npmodels$ | `\\npmodels` | nepravdivosť v ohodnotení |\n| ≐ | `\\doteq` | rovnosť (ako logický) symbol | $\\Forms$ | `\\Forms` | množina všetkých formúl jazyka $\\Lang$ | $\\pentails$ | `\\pentails` | výrokovologické (<em>p</em>ropozičné) vyplývanie |\n| ¬ | `\\lnot` | negácia | $\\Struct$ | `\\Struct` | štruktúra | $\\npentails$ | `\\npentails` | výrokovologické nevyplývanie |\n| ∀ | `\\forall` | všeobecný kvantifikátor | $\\sym{Ann}$, $\\asym{2}{likes}$ | `\\sym{Ann}`, `\\asym{2}{likes}` | konkrétny mimolog. symbol | ↦ | `\\mapsto` | zobrazenie (prvku na prvok) |\n| ∃ | `\\exists` | existenčný kvantifikátor | $\\vk$, …, $\\vz$ | `\\vk`, …, `\\vz` | konkrétna indivíduová premenná | $\\Tabl$ | `\\Tabl` | metapremenná ozn. tablo |\n|  $\\sign T$, $\\sign F$  | `\\sign{T}`, `\\sign{F}` | znamienko označenej formuly | $\\bigl($, $\\bigr)$| `\\bigl(`, `\\bigr)` | väčšie zátvorky | $\\pi$ | `\\pi` | metapremenná ozn. vetvu tabla |\n:::\n::::",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "3": {
+      "id": 3,
+      "type": "text",
+      "data": ":::header\n## Cvičenie 10.:cnt[a]\n::p[Explicitné definície pojmov]{.h4}\n\n:small[:icon[source] \nZbierka: :xref[7.5.4]{.exbook label=\"úloha\"}.\nPrednášky: :xref[14.2]{.lec prefix=\"page\" label=\"def.\"} (explicitná definícia), [str. 223](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/poznamky-z-prednasok.pdf#page=223) (podmienené definície).]\n:::\n\nUvažujme jazyk logiky prvého rádu $\\Lang$ z cvičenia 9.4, pričom zamýšľaný význam predikátových a funkčných symbolov je:\n\n:::::div{.row}\n::::div{.col-md-6}\n:::div{.table.table-intended-meaning.small}\n| Predikátový symbol   | Zamýšľaný význam           |\n|----------------------|----------------------------|\n| piece($x$)           | $x$ je figúrka             |\n| square($x$)          | $x$ je políčko             |\n| rook($x$)            | $x$ je veža                |\n| king($x$)            | $x$ je kráľ                |\n| may\\_enter($x$, $y$) | $x$ sa môže posunúť na $y$ |\n:::\n::::\n::::div{.col-md-6}\n:::div{.table.table-intended-meaning.small}\n| Funkčný symbol | Zamýšľaný význam     |\n|----------------|----------------------|\n| on($x$)        | to, na čom $x$ stojí |\n| clr($x$)       | farba, ktorú má $x$  |\n:::\n::::\n:::::\n\n:icon[tools] Pomocou aplikácie Formalization Checker sformalizujte definície nasledovných odvodených pojmov \na zapíšte ich ako [(podmienené) definície](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/poznamky-z-prednasok.pdf#page=223) predikátov, ktorými rozšírime jazyk $\\Lang$:\n\n:::div{.table.table-intended-meaning.small.position-relative}\n\n| Ozn. definície | Predikát             | Význam                           |\n|:--------------:|----------------------|----------------------------------|\n|$D_1$ | $\\sym{may\\_take}(x,y)$ | (figúrka) $x$ môže zobrať (figúrku) $y$  |\n|$D_2$ | $\\sym{check}(x)$ | $x$ je v šachu |\n|$D_3$ | $\\sym{check\\_mate}(x)$ | $x$ je v mate |\n|:icon[homework]{.fs-6.position-absolute.start-0.ms-1}$D_4$ | $\\sym{stale\\_mate}(x)$ | $x$ je v pate |\n:::",
+      "idCounter": 4,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "5": {
+      "id": 5,
+      "type": "text",
+      "data": ":::header\n## Cvičenie 10.:cnt[a]\n::p[Sémantika explicitných definícií]{.h4}\n\n:small[:icon[source] \nZbierka: :xref[7.5.5]{.exbook label=\"úloha\"}.]\n:::\n\nUvažujme jazyk $\\Lang$ z predošlého cvičenia\na teóriu $T = \\{ A_1, A_2, A_3, A_4 \\}$, kde\n\n:::div{.dl-indented}\n$A_1 = \\A\\vx (\\sym{piece}(\\vx) \\limpl \\sym{square}(\\sym{on}(\\vx)) ) \\land \\A\\vx ( \\sym{king}(\\vx) \\lor \\sym{rook}(\\vx) \\limpl \\sym{piece}(\\vx))$    \n: Figúrky stoja na políčkach. Králi a veže sú figúrky.\n\n$A_2 = \\A\\vx(\\sym{piece}(\\vx) ∨ \\sym{square}(\\vx) → \\sym{clr}(\\vx)\\doteq\\sym{white} ∨ \\sym{clr}(\\vx)\\doteq\\sym{black} )$\n: Figúrky a políčka majú bielu alebo čiernu farbu.  \n   \n$\\begin{aligned} A_3 = \\A\\vx\\A\\vy(&\\sym{square}(\\vx) ∧ \\sym{piece}(\\vy) ∧ \\sym{on}(\\vy)≐\\vx → \\\\ &\\A\\vz (\\sym{piece}(\\vz) ∧ \\sym{on}(\\vz)≐\\vx→ \\vz≐\\vy )) \\end{aligned}$\n: Na jednom políčku môže stáť najviac jedna figúrka.  \n\n$\\begin{aligned} A_4 = &\\A\\vx (\\sym{piece}(\\vx) → ¬\\sym{square}(\\vx) ∧ ¬ \\E\\vy \\sym{clr}(\\vy) ≐ \\vx) ∧{}\\\\&\\A\\vx ( \\sym{square}(\\vx) → ¬ \\E\\vy \\sym{clr}(\\vy) ≐ \\vx )\\end{aligned}$\n: Figúrky, políčka a farby sú navzájom po dvojiciach disjunktné.  \n   \n:::",
+      "idCounter": 3,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "7": {
+      "id": 7,
+      "type": "text",
+      "data": ":::header\n## Cvičenie 10.:cnt[a]\n::p[Dôkazy s explicitnými definíciami]{.h4}\n\n:small[:icon[source] \nZbierka: :xref[7.5.10]{.exbook label=\"príklad\"}.]\n:::\n\nV logike prvého rádu môžeme sformalizovať (axiomatizovať)\nteóriu množín.\nÚplná formalizácia je pomerne komplikovaná.\nPre naše účely postačí nasledujúci fragment $T_\\mathrm{set}$\nso základnými vzťahmi a operáciami\nv jazyku $\\mathcal{L}_\\mathrm{set}$,\nkde $\\mathcal{C}_{\\mathcal{L}_\\mathrm{set}} = \\{ \\textsf{empty} \\}$,\n$\\mathcal{P}_{\\mathcal{L}_\\mathrm{set}} = \\{ \\textsf{in}^2, \\textsf{subseteq}^2 \\}$\na $\\mathcal{F}_{\\mathcal{L}_\\mathrm{set}} = \\{ \\textsf{union}^2, \\textsf{inter}^2, \\textsf{diff}^2 \\}$:\n\n$$\n\\begin{align*}\n    \\A{\\vx}\\A{\\vy}\n        &(\\,\\A{\\vz}(\\sym{in}(\\vz, \\vx) \\lequiv \\sym{in}(\\vz, \\vy)) \\limpl \\vx \\doteq \\vy\\,)\n        \\tag{extenzionalita}\\\\\n    \\A{\\vx}\\A{\\vy}\n        &(\\,\\sym{subseteq}(\\vx, \\vy) \\lequiv \\A{\\vz}(\\sym{in}(\\vz, \\vx) \\limpl \\sym{in}(\\vz, \\vy))\\,)\n        \\tag{podmnožina}\\\\\n    \\A{\\vz}&\\,\\lnot \\sym{in}(\\vz,\\sym{empty})\n        \\tag{prázdna mn.}\\\\\n    \\A{\\vx}\\A{\\vy}\\A{\\vz}\n        &(\\,\\sym{in}(\\vz,\\sym{inter}(\\vx,\\vy)) \\lequiv (\\sym{in}(\\vz,\\vx) \\land \\sym{in}(\\vz,\\vy))\\,)\n        \\tag{prienik}\\\\\n    \\A{\\vx}\\A{\\vy}\\A{\\vz}\n        &(\\,\\sym{in}(\\vz,\\sym{union}(\\vx,\\vy)) \\lequiv (\\sym{in}(\\vz, \\vx) \\lor \\sym{in}(\\vz,\\vy))\\,)\n        \\tag{zjednotenie}\\\\\n    \\A{\\vx}\\A{\\vy}\\A{\\vz}\n        &(\\,\\sym{in}(\\vz,\\sym{diff}(\\vx,\\vy)) \\lequiv\n            (\\sym{in}(\\vz,\\vx) \\land \\lnot\\sym{in}(\\vz,\\vy))\\,)\n        \\tag{rozdiel}\n\\end{align*}\n$$\n\n:icon[tools] Prvorádovými tablami rozšírenými o pravidlá $\\gamma^*$ a $\\delta^*$\na pravidlá z :xref[5.3.1]{.exbook label=\"úlohy\"} v zbierke dokážte,\nže z $T_\\mathrm{set}$ vyplývajú nasledujúce formuly:\n:::div{.position-relative}\n* $X_1 = \\A{\\vx}\\A{\\vy}(\\,\\sym{diff}(\\vx, \\vy) \\doteq \\sym{empty} \\limpl\n      \\sym{subseteq}(\\vx,\\vy)\\,)$\n* $X_2 = \\A{\\vx}\\A{\\vy}\\A{\\vz}\n      (\\,(\\sym{subseteq}(\\vx,\\vy)\\land\\sym{subseteq}(\\vy,\\vz)) \\limpl\n          \\sym{subseteq}(\\vx,\\vz) \\,)$\n* :icon[homework]{.position-absolute.start-0.ms-2} $X_3 = \\A{\\vu}\\A{\\vx}\\A{\\vy}\n      (\\,\\sym{subseteq}(\\sym{union}(\\vx,\\vy),\\vu) \\limpl\n          \\sym{subseteq}(\\vx,\\vu) \\,)$\n::::",
+      "idCounter": 5,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "9": {
+      "id": 9,
+      "type": "text",
+      "data": ":::header\n## :icon[house-fill]{.text-primary} Odporúčané domáce cvičenie 10.:cnt[a]\n\n:small[:icon[source] \nZbierka: :xref[7.3.2]{.exbook label=\"úloha\"}.]\n:::\n\nDokážte, že nasledujúce formuly sú platné, resp. vyplývajú z uvedenej teórie:\n:::enum{.a}\n1. $\\entails\\E{\\vx}( \\sym{drinks}(\\vx) \\limpl \\A{\\vy}\\sym{drinks}(\\vy) )$,\n\n2. $\\entails\n            \\A{\\vx}( \\E{\\vy}\\sym{knows}(\\vx,\\sym{father}(\\vy)) \\limpl\n                \\E{\\vy}\\sym{knows}(\\vx,\\vy) )$,\n\n3. $\\{\n        \\A{\\vx}( \\sym{social}(\\sym{best\\_friend}(\\vx)) \\limpl\n                  \\E{\\vy}\\sym{knows}(\\vx,\\sym{best\\_friend}(\\vy)) )\n      \\}\\entails\n        \\E{\\vx}( \\sym{social}(\\vx) \\limpl\n                  \\A{\\vy}\\E{\\vz} \\sym{knows}(\\sym{mother}(\\vy),\\vz) )$.\n:::\n\n:::aside{.note.bg-transparent.p-0}\n:icon[explanation]\nDôkazy platnosti prvých dvoch formúl sú prípravou na dôkaz vyplývania v tretej časti.\n:::",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "10": {
+      "id": 10,
+      "type": "text",
+      "data": ":::header\n## :icon[homework] Odporúčané domáce cvičenie 10.:cnt[a]<br>(príprava na skúšku)\n\n:small[:icon[source] \nZbierka: :xref[4.3.5]{.exbook label=\"príklad\"}.]\n:::\n\nZadefinujte vzťah _z teórie $T$ vyplýva formula $X$_ ($T \\pentails X$)\na pojem _nesplniteľná formula_ vo výrokovologickej časti logiky prvého rádu.\n\nDokážte alebo vyvráťte:\n  Nech $S$ je množina výrokovologických formúl\n  a nech $X$ je výrokovologická formula.\n  Ak $X$ je nesplniteľná a $S \\pentails X$, tak $S$ je nesplniteľná.",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "35": {
+      "id": 35,
+      "type": "tableauEditor",
+      "data": {
+        "type": "assumption",
+        "node": {
+          "id": 1,
+          "value": "T ∀x ∀y ( ∀z ( in(z, x) ↔ in(z, y) ) → x ≐ y )",
+          "references": []
+        },
+        "child": {
+          "type": "assumption",
+          "node": {
+            "id": 2,
+            "value": "T ∀x ∀y ( subseteq(x, y) ↔ ∀z ( in(z, x) → in(z, y) ) )",
+            "references": []
+          },
+          "child": {
+            "type": "assumption",
+            "node": {
+              "id": 3,
+              "value": "T ∀z ¬ in(z, empty)",
+              "references": []
+            },
+            "child": {
+              "type": "assumption",
+              "node": {
+                "id": 4,
+                "value": "T ∀x ∀y ∀z ( in(z, inter(x, y)) ↔ ( in(z, x) ∧ in(z, y) ) )",
+                "references": []
+              },
+              "child": {
+                "type": "assumption",
+                "node": {
+                  "id": 5,
+                  "value": "T ∀x ∀y ∀z ( in(z, union(x, y)) ↔ ( in(z, x) ∨ in(z, y) ) )",
+                  "references": []
+                },
+                "child": {
+                  "type": "assumption",
+                  "node": {
+                    "id": 6,
+                    "value": "T ∀x ∀y ∀z ( in(z, diff(x, y)) ↔ ( in(z, x) ∧ ¬ in(z, y) ) )",
+                    "references": []
+                  },
+                  "child": {
+                    "type": "open",
+                    "node": {
+                      "id": 7,
+                      "value": "F ∀x ∀y ∀z ( ( subseteq(x, y) ∧ subseteq(y, z) ) → subseteq(x, z) )",
+                      "references": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "config": "Full FOL"
+      },
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "36": {
+      "id": 36,
+      "type": "tableauEditor",
+      "data": {
+        "type": "assumption",
+        "node": {
+          "id": 1,
+          "value": "T ∀x ∀y ( ∀z ( in(z, x) ↔ in(z, y) ) → x ≐ y )",
+          "references": []
+        },
+        "child": {
+          "type": "assumption",
+          "node": {
+            "id": 2,
+            "value": "T ∀x ∀y ( subseteq(x, y) ↔ ∀z ( in(z, x) → in(z, y) ) )",
+            "references": []
+          },
+          "child": {
+            "type": "assumption",
+            "node": {
+              "id": 3,
+              "value": "T ∀z ¬ in(z, empty)",
+              "references": []
+            },
+            "child": {
+              "type": "assumption",
+              "node": {
+                "id": 4,
+                "value": "T ∀x ∀y ∀z ( in(z, inter(x, y)) ↔ ( in(z, x) ∧ in(z, y) ) )",
+                "references": []
+              },
+              "child": {
+                "type": "assumption",
+                "node": {
+                  "id": 5,
+                  "value": "T ∀x ∀y ∀z ( in(z, union(x, y)) ↔ ( in(z, x) ∨ in(z, y) ) )",
+                  "references": []
+                },
+                "child": {
+                  "type": "assumption",
+                  "node": {
+                    "id": 6,
+                    "value": "T ∀x ∀y ∀z ( in(z, diff(x, y)) ↔ ( in(z, x) ∧ ¬ in(z, y) ) )",
+                    "references": []
+                  },
+                  "child": {
+                    "type": "open",
+                    "node": {
+                      "id": 7,
+                      "value": "F ∀x ∀y ( diff(x, y) ≐ empty → subseteq(x, y) )",
+                      "references": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "config": "Full FOL"
+      },
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "37": {
+      "id": 37,
+      "type": "tableauEditor",
+      "data": {
+        "type": "assumption",
+        "node": {
+          "id": 1,
+          "value": "T ∀x ∀y ( ∀z ( in(z, x) ↔ in(z, y) ) → x ≐ y )",
+          "references": []
+        },
+        "child": {
+          "type": "assumption",
+          "node": {
+            "id": 2,
+            "value": "T ∀x ∀y ( subseteq(x, y) ↔ ∀z ( in(z, x) → in(z, y) ) )",
+            "references": []
+          },
+          "child": {
+            "type": "assumption",
+            "node": {
+              "id": 3,
+              "value": "T ∀z ¬ in(z, empty)",
+              "references": []
+            },
+            "child": {
+              "type": "assumption",
+              "node": {
+                "id": 4,
+                "value": "T ∀x ∀y ∀z ( in(z, inter(x, y)) ↔ ( in(z, x) ∧ in(z, y) ) )",
+                "references": []
+              },
+              "child": {
+                "type": "assumption",
+                "node": {
+                  "id": 5,
+                  "value": "T ∀x ∀y ∀z ( in(z, union(x, y)) ↔ ( in(z, x) ∨ in(z, y) ) )",
+                  "references": []
+                },
+                "child": {
+                  "type": "assumption",
+                  "node": {
+                    "id": 6,
+                    "value": "T ∀x ∀y ∀z ( in(z, diff(x, y)) ↔ ( in(z, x) ∧ ¬ in(z, y) ) )",
+                    "references": []
+                  },
+                  "child": {
+                    "type": "open",
+                    "node": {
+                      "id": 7,
+                      "value": "F ∀u ∀x ∀y ( subseteq(union(x, y), u) → subseteq(x, u) )",
+                      "references": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "config": "Full FOL"
+      },
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "38": {
+      "id": 38,
+      "type": "text",
+      "data": "::h3[Formálne riešenie]{.h4}\n\n:::aside{.note.bg-transparent.p-0}\n:icon[technical]\nVyužite pripravené editory tabiel so sadou pravidiel _Full FOL_,\nsprávne inicializované celou teóriou (budete z nej potrebovať iba časť) a dokazovanými formulami.\n:::",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "39": {
+      "id": 39,
+      "type": "text",
+      "data": "::h3[Formálne závery]{.h4}",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "41": {
+      "id": 41,
+      "type": "text",
+      "data": "::h4[:icon[write] Záver pre $X_1$]{.h6}\n:small[**Vyslovte jasný záver** o vyplývaní $X_1$ z teórie $T$.\nVysvetlite, prečo vaše tablo dokazuje vyplývanie.]\n\n…",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "42": {
+      "id": 42,
+      "type": "text",
+      "data": "::h4[:icon[write] Záver pre $X_2$]{.h6}\n:small[**Vyslovte jasný záver** o vyplývaní $X_2$ z teórie $T$.\nVysvetlite, prečo vaše tablo dokazuje vyplývanie.]\n\n…",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "43": {
+      "id": 43,
+      "type": "text",
+      "data": "::h4[:icon[write] Záver pre $X_3$]{.h6}\n:small[**Vyslovte jasný záver** o vyplývaní $X_3$ z teórie $T$.\nVysvetlite, prečo vaše tablo dokazuje vyplývanie.]\n\n…",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "44": {
+      "id": 44,
+      "type": "text",
+      "data": "::h3[a) Definičné rozšírenie teórie]{.h4}\n\n:icon[tools]\nV pripravenej aplikácii Structure explorer je model $\\Struct$ teórie $T$.\n\nRozšírte teóriu o svoju formalizáciu $D_1$ definície vzťahu _figúrka môže zobrať inú figúrku_ z predošlého cvičenia (pridajte ju ako formulu $\\varphi_5$).\n\nNásledne rozšírte model $\\Struct$ o interpretáciu predikátu $\\sym{may\\_take}^2$ tak,\naby v rozšírení bola pravdivá teória $T \\cup \\{D_1\\}$\n(teda pôvodná teória aj vaša definícia).\n\n:::aside{.note.bg-transparent.p-0}\n:icon[explanation]\nVšimnite si, že po rozšírení teórie o explicitnú definíciu nového predikátu\nstačí model pôvodnej teórie rozšíriť o interpretáciu definovaného predikátu.\nOstatné časti štruktúry sa nemenia a pridaná interpretácia je jednoznačne určená.\n\nExplicitne definovaný predikát je podobný **dopytu** (query)\nalebo **pohľadu** (view) v databázach.\nKaždý `SELECT` bez agregácií sa dá\npreložiť na ekvivalentnú prvorádovú explicitnú definíciu.\n:::",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "45": {
+      "id": 45,
+      "type": "text",
+      "data": "::h3[b) Všeobecné rozšírenie teórie]{.h4}\n\n:icon[tools]\nV pripravenej aplikácii Structure explorer je ďalší model $\\Struct$ teórie $T$.\n\nRozšírte teóriu o svoje formalizácie $D_1$, $D_2$, $D_3$\ndefinícií vzťahu _figúrka môže zobrať inú figúrku_\na vlastností _kráľ je v šachu_ a _kráľ je v mate_ z predošlého cvičenia\n(pridajte ich ako formuly $\\varphi_5$, $\\varphi_6$, $\\varphi_7$).\n\nNásledne upravte štruktúru tak, aby bola modelom teórie\n$$\n  T \\cup \\{ D_1, D_2, D_3, \\E \\vx (\\sym{king}(\\vx)\\land\\sym{check\\_mate}(\\vx)) \\}\n$$\n\n:::aside{.note.bg-transparent.p-0}\n:icon[explanation]\nTentoraz sme teóriu **okrem** explicitných definícií rozšírili\n**aj** o formulu $\\varphi_8 = \\E \\vx (\\sym{king}(\\vx)\\land\\sym{check\\_mate}(\\vx))$,\nktorá obsahuje jeden z definovaných predikátov.\n\nV tejto situácii je konštrukcia modelu rozšírenej teórie **komplikovanejšia**,\nako keď sme v časti a) pridali iba explicitnú definíciu.\nAby bola rozšírená teória pravdivá, je potrebné štruktúru upraviť tak,\naby akonáhle je pre nejaký prvok pravdivá ľavá strana ekvivalencie v definícii,\nbola pre tento prvok pravdivá aj jej pravá strana.\n\n:icon[warning]\nDoménu štruktúry a interpretácie funkcií a predikátov meňte **iba pridávaním prvkov**.\nV tomto prípade to na nájdenie modelu stačí.\nVo všeobecnosti by to stačiť nemuselo a nový model by ani nemusel existovať.\n\n:icon[technical]\nDo domény a interpretácií kvôli prehľadnosti **pridávajte prvky na začiatok**.\n:::",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "49": {
+      "id": 49,
+      "type": "structureExplorer",
+      "data": "{\"common\":{\"teacherMode\":false},\"language\":{\"constants\":{\"value\":\"white, black\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[\"white\",\"black\"]},\"predicates\":{\"value\":\"piece/1, square/1, king/1, rook/1, may_enter/2, may_take/2\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[{\"name\":\"piece\",\"arity\":1},{\"name\":\"square\",\"arity\":1},{\"name\":\"king\",\"arity\":1},{\"name\":\"rook\",\"arity\":1},{\"name\":\"may_enter\",\"arity\":2},{\"name\":\"may_take\",\"arity\":2}]},\"functions\":{\"value\":\"on/1, clr/1\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[{\"name\":\"on\",\"arity\":1},{\"name\":\"clr\",\"arity\":1}]},\"lockedComponent\":true},\"structure\":{\"constants\":{\"white\":{\"value\":\"W\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[]},\"black\":{\"value\":\"B\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[]}},\"predicates\":{\"piece/1\":{\"value\":\"♔, ♚, ♖, ♜\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[[\"♔\"],[\"♚\"],[\"♖\"],[\"♜\"]],\"tableEnabled\":false},\"square/1\":{\"value\":\"a1, a2, a3, b1, b2, b3, c1, c2, c3\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[[\"a1\"],[\"a2\"],[\"a3\"],[\"b1\"],[\"b2\"],[\"b3\"],[\"c1\"],[\"c2\"],[\"c3\"]],\"tableEnabled\":false},\"king/1\":{\"value\":\"♔, ♚\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[[\"♔\"],[\"♚\"]],\"tableEnabled\":false},\"rook/1\":{\"value\":\"♖, ♜\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[[\"♖\"],[\"♜\"]],\"tableEnabled\":false},\"may_enter/2\":{\"value\":\"(♔, a2), (♔, b1), (♔, b2), (♚, c2), (♚, b3), (♚, b2), (♖, a1), (♖, a2), (♖, b3), (♖, c3), (♜, c2), (♜, c3), (♜, a1), (♜, b1)\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[[\"♔\",\"a2\"],[\"♔\",\"b1\"],[\"♔\",\"b2\"],[\"♚\",\"c2\"],[\"♚\",\"b3\"],[\"♚\",\"b2\"],[\"♖\",\"a1\"],[\"♖\",\"a2\"],[\"♖\",\"b3\"],[\"♖\",\"c3\"],[\"♜\",\"c2\"],[\"♜\",\"c3\"],[\"♜\",\"a1\"],[\"♜\",\"b1\"]],\"tableEnabled\":false,\"databaseEnabled\":false},\"may_take/2\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[],\"tableEnabled\":false,\"databaseEnabled\":false}},\"functions\":{\"on/1\":{\"value\":\"(♔, a1), (♚, c3), (♖, a3), (♜, c1), (a1, N), (a2, N), (a3, N), (b1, N), (b2, N), (b3, N), (c1, N), (c2, N), (c3, N), (W, N), (B, N), (N, N)\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[[\"♔\",\"a1\"],[\"♚\",\"c3\"],[\"♖\",\"a3\"],[\"♜\",\"c1\"],[\"a1\",\"N\"],[\"a2\",\"N\"],[\"a3\",\"N\"],[\"b1\",\"N\"],[\"b2\",\"N\"],[\"b3\",\"N\"],[\"c1\",\"N\"],[\"c2\",\"N\"],[\"c3\",\"N\"],[\"W\",\"N\"],[\"B\",\"N\"],[\"N\",\"N\"]],\"tableEnabled\":true,\"databaseEnabled\":false},\"clr/1\":{\"value\":\"(♔, W), (♖, W), (♚, B), (♜, B), (a1, W), (a2, B), (a3, W), (b1, B), (b2, W), (b3, B), (c1, W), (c2, B), (c3, W), (W, W), (B, B), (N, N)\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[[\"♔\",\"W\"],[\"♖\",\"W\"],[\"♚\",\"B\"],[\"♜\",\"B\"],[\"a1\",\"W\"],[\"a2\",\"B\"],[\"a3\",\"W\"],[\"b1\",\"B\"],[\"b2\",\"W\"],[\"b3\",\"B\"],[\"c1\",\"W\"],[\"c2\",\"B\"],[\"c3\",\"W\"],[\"W\",\"W\"],[\"B\",\"B\"],[\"N\",\"N\"]],\"tableEnabled\":true,\"databaseEnabled\":false}},\"variables\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[]},\"domain\":{\"value\":\"♔, ♚, ♖, ♜, a1, a2, a3, b1, b2, b3, c1, c2, c3, W, B, N\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[\"♔\",\"♚\",\"♖\",\"♜\",\"a1\",\"a2\",\"a3\",\"b1\",\"b2\",\"b3\",\"c1\",\"c2\",\"c3\",\"W\",\"B\",\"N\"]}},\"expressions\":{\"formulas\":[{\"value\":\"∀x ( piece(x) → square(on(x)) ) ∧ ∀x ( king(x) ∨ rook(x) → piece(x)  )\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"subLeft\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"name\":\"piece\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"square\",\"terms\":[{\"name\":\"on\",\"terms\":[{\"name\":\"x\"}]}]}}},\"subRight\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"subLeft\":{\"name\":\"king\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"rook\",\"terms\":[{\"name\":\"x\"}]}},\"subRight\":{\"name\":\"piece\",\"terms\":[{\"name\":\"x\"}]}}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true},{\"value\":\"∀x ( piece(x) ∨ square(x) → clr(x) ≐ white ∨ clr(x) ≐ black )\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"subLeft\":{\"name\":\"piece\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"square\",\"terms\":[{\"name\":\"x\"}]}},\"subRight\":{\"subLeft\":{\"subLeft\":{\"name\":\"clr\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"white\"}},\"subRight\":{\"subLeft\":{\"name\":\"clr\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"black\"}}}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true},{\"value\":\"∀x ∀y ( square(x) ∧ piece(y) ∧ on(y) ≐ x → ∀z( piece(z) ∧ on(z) ≐ x → z ≐ y ) )\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"variableName\":\"x\",\"subFormula\":{\"variableName\":\"y\",\"subFormula\":{\"subLeft\":{\"subLeft\":{\"subLeft\":{\"name\":\"square\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"piece\",\"terms\":[{\"name\":\"y\"}]}},\"subRight\":{\"subLeft\":{\"name\":\"on\",\"terms\":[{\"name\":\"y\"}]},\"subRight\":{\"name\":\"x\"}}},\"subRight\":{\"variableName\":\"z\",\"subFormula\":{\"subLeft\":{\"subLeft\":{\"name\":\"piece\",\"terms\":[{\"name\":\"z\"}]},\"subRight\":{\"subLeft\":{\"name\":\"on\",\"terms\":[{\"name\":\"z\"}]},\"subRight\":{\"name\":\"x\"}}},\"subRight\":{\"subLeft\":{\"name\":\"z\"},\"subRight\":{\"name\":\"y\"}}}}}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true},{\"value\":\"∀x ( piece(x) → ¬square(x) ∧ ¬ ∃y clr(y) ≐ x ) ∧ ∀x ( square(x) → ¬ ∃y clr(y) ≐ x )\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"subLeft\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"name\":\"piece\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"subLeft\":{\"subFormula\":{\"name\":\"square\",\"terms\":[{\"name\":\"x\"}]}},\"subRight\":{\"subFormula\":{\"variableName\":\"y\",\"subFormula\":{\"subLeft\":{\"name\":\"clr\",\"terms\":[{\"name\":\"y\"}]},\"subRight\":{\"name\":\"x\"}}}}}}},\"subRight\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"name\":\"square\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"subFormula\":{\"variableName\":\"y\",\"subFormula\":{\"subLeft\":{\"name\":\"clr\",\"terms\":[{\"name\":\"y\"}]},\"subRight\":{\"name\":\"x\"}}}}}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true},{\"value\":\"Definícia 𝐷₁ vzťahu „figúrka môže zobrať inú figúrku“ z 10.1\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"Expected equality symbol or non-equality symbol but \\\"\\ud835\\\" found.\",\"inputLocked\":false,\"answerLocked\":true,\"parsed\":null,\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":false}],\"terms\":[]},\"diagramCordState\":{}}",
+      "idCounter": 2,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "50": {
+      "id": 50,
+      "type": "structureExplorer",
+      "data": "{\"common\":{\"teacherMode\":false},\"language\":{\"constants\":{\"value\":\"white, black\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[\"white\",\"black\"]},\"predicates\":{\"value\":\"piece/1, square/1, king/1, rook/1, may_enter/2, may_take/2, check/1, check_mate/1\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[{\"name\":\"piece\",\"arity\":1},{\"name\":\"square\",\"arity\":1},{\"name\":\"king\",\"arity\":1},{\"name\":\"rook\",\"arity\":1},{\"name\":\"may_enter\",\"arity\":2},{\"name\":\"may_take\",\"arity\":2},{\"name\":\"check\",\"arity\":1},{\"name\":\"check_mate\",\"arity\":1}]},\"functions\":{\"value\":\"on/1, clr/1\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[{\"name\":\"on\",\"arity\":1},{\"name\":\"clr\",\"arity\":1}]},\"lockedComponent\":true},\"structure\":{\"constants\":{\"white\":{\"value\":\"W\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[]},\"black\":{\"value\":\"B\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[]}},\"predicates\":{\"piece/1\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[],\"tableEnabled\":false},\"square/1\":{\"value\":\"a1, a2, a3, b1, b2, b3, c1, c2, c3\",\"locked\":true,\"errorMessage\":\"\",\"parsed\":[[\"a1\"],[\"a2\"],[\"a3\"],[\"b1\"],[\"b2\"],[\"b3\"],[\"c1\"],[\"c2\"],[\"c3\"]],\"tableEnabled\":false,\"databaseEnabled\":false},\"king/1\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[],\"tableEnabled\":false},\"rook/1\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[],\"tableEnabled\":false},\"may_enter/2\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[],\"tableEnabled\":false,\"databaseEnabled\":false},\"may_take/2\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[],\"tableEnabled\":false},\"check/1\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[],\"tableEnabled\":false},\"check_mate/1\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[],\"tableEnabled\":false}},\"functions\":{\"on/1\":{\"value\":\"(W, N), (B, N), (N, N), (a1, N), (a2, N), (a3, N), (b1, N), (b2, N), (b3, N), (c1, N), (c2, N), (c3, N)\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[[\"W\",\"N\"],[\"B\",\"N\"],[\"N\",\"N\"],[\"a1\",\"N\"],[\"a2\",\"N\"],[\"a3\",\"N\"],[\"b1\",\"N\"],[\"b2\",\"N\"],[\"b3\",\"N\"],[\"c1\",\"N\"],[\"c2\",\"N\"],[\"c3\",\"N\"]],\"tableEnabled\":true,\"databaseEnabled\":false},\"clr/1\":{\"value\":\"(W, W), (B, B), (N, N), (a1, W), (a2, B), (a3, W), (b1, B), (b2, W), (b3, B), (c1, W), (c2, B), (c3, W)\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[[\"W\",\"W\"],[\"B\",\"B\"],[\"N\",\"N\"],[\"a1\",\"W\"],[\"a2\",\"B\"],[\"a3\",\"W\"],[\"b1\",\"B\"],[\"b2\",\"W\"],[\"b3\",\"B\"],[\"c1\",\"W\"],[\"c2\",\"B\"],[\"c3\",\"W\"]],\"tableEnabled\":true,\"databaseEnabled\":false}},\"variables\":{\"value\":\"\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[]},\"domain\":{\"value\":\"a1, a2, a3, b1, b2, b3, c1, c2, c3, W, B, N\",\"locked\":false,\"errorMessage\":\"\",\"parsed\":[\"a1\",\"a2\",\"a3\",\"b1\",\"b2\",\"b3\",\"c1\",\"c2\",\"c3\",\"W\",\"B\",\"N\"]}},\"expressions\":{\"formulas\":[{\"value\":\"∀x ( piece(x) → square(on(x)) ) ∧ ∀x ( king(x) ∨ rook(x) → piece(x) )\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"subLeft\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"name\":\"piece\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"square\",\"terms\":[{\"name\":\"on\",\"terms\":[{\"name\":\"x\"}]}]}}},\"subRight\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"subLeft\":{\"name\":\"king\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"rook\",\"terms\":[{\"name\":\"x\"}]}},\"subRight\":{\"name\":\"piece\",\"terms\":[{\"name\":\"x\"}]}}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true},{\"value\":\"∀x ( piece(x) ∨ square(x) → clr(x) ≐ white ∨ clr(x) ≐ black )\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"subLeft\":{\"name\":\"piece\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"square\",\"terms\":[{\"name\":\"x\"}]}},\"subRight\":{\"subLeft\":{\"subLeft\":{\"name\":\"clr\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"white\"}},\"subRight\":{\"subLeft\":{\"name\":\"clr\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"black\"}}}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true},{\"value\":\"∀x ∀y ( square(x) ∧ piece(y) ∧ on(y) ≐ x → ∀z ( piece(z) ∧ on(z) ≐ x → z≐y ) )\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"variableName\":\"x\",\"subFormula\":{\"variableName\":\"y\",\"subFormula\":{\"subLeft\":{\"subLeft\":{\"subLeft\":{\"name\":\"square\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"piece\",\"terms\":[{\"name\":\"y\"}]}},\"subRight\":{\"subLeft\":{\"name\":\"on\",\"terms\":[{\"name\":\"y\"}]},\"subRight\":{\"name\":\"x\"}}},\"subRight\":{\"variableName\":\"z\",\"subFormula\":{\"subLeft\":{\"subLeft\":{\"name\":\"piece\",\"terms\":[{\"name\":\"z\"}]},\"subRight\":{\"subLeft\":{\"name\":\"on\",\"terms\":[{\"name\":\"z\"}]},\"subRight\":{\"name\":\"x\"}}},\"subRight\":{\"subLeft\":{\"name\":\"z\"},\"subRight\":{\"name\":\"y\"}}}}}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true},{\"value\":\"∀x ( piece(x) → ¬square(x) ∧ ¬ ∃y clr(y) ≐ x ) ∧ ∀x ( square(x) → ¬ ∃y clr(y) ≐ x )\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"subLeft\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"name\":\"piece\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"subLeft\":{\"subFormula\":{\"name\":\"square\",\"terms\":[{\"name\":\"x\"}]}},\"subRight\":{\"subFormula\":{\"variableName\":\"y\",\"subFormula\":{\"subLeft\":{\"name\":\"clr\",\"terms\":[{\"name\":\"y\"}]},\"subRight\":{\"name\":\"x\"}}}}}}},\"subRight\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"name\":\"square\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"subFormula\":{\"variableName\":\"y\",\"subFormula\":{\"subLeft\":{\"name\":\"clr\",\"terms\":[{\"name\":\"y\"}]},\"subRight\":{\"name\":\"x\"}}}}}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true},{\"value\":\"Definícia 𝐷₁ vzťahu „figúrka môže zobrať inú figúrku“ z 10.1\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"Expected equality symbol or non-equality symbol but \\\"\\ud835\\\" found.\",\"inputLocked\":false,\"answerLocked\":true,\"parsed\":null,\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":false},{\"value\":\"Definícia 𝐷₂ vlastnosti „kráľ je v šachu“ z 10.1\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"Expected equality symbol or non-equality symbol but \\\"\\ud835\\\" found.\",\"inputLocked\":false,\"answerLocked\":true,\"parsed\":null,\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":false},{\"value\":\"Definícia 𝐷₃ vlastnosti „kráľ je v mate“ z 10.1\",\"expressionValue\":true,\"answerValue\":true,\"errorMessage\":\"Expected equality symbol or non-equality symbol but \\\"\\ud835\\\" found.\",\"inputLocked\":false,\"answerLocked\":true,\"parsed\":null,\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":false},{\"value\":\"∃x ( king(x) ∧ check_mate(x) )\",\"expressionValue\":false,\"answerValue\":true,\"errorMessage\":\"\",\"inputLocked\":true,\"answerLocked\":true,\"parsed\":{\"variableName\":\"x\",\"subFormula\":{\"subLeft\":{\"name\":\"king\",\"terms\":[{\"name\":\"x\"}]},\"subRight\":{\"name\":\"check_mate\",\"terms\":[{\"name\":\"x\"}]}}},\"gameHistory\":[],\"showVariables\":false,\"gameEnabled\":false,\"variableIndex\":1,\"validSyntax\":true}],\"terms\":[]},\"diagramCordState\":{}}",
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "60": {
+      "id": 60,
+      "type": "formalizationChecker",
+      "data": {
+        "exercise": {
+          "exercise_id": 43,
+          "title": "2024 – 10 – Definície",
+          "description": "Sformalizujte nasledovné podmienené definície v uvedenom jazyku logiky prvého rádu.",
+          "constants": "white, black",
+          "predicates": "piece/1, square/1, king/1, rook/1, may_enter/2, may_take/2, check/1, check_mate/1, stale_mate/1",
+          "functions": "on/1, clr/1",
+          "constraints": "",
+          "propositions": [
+            {
+              "proposition_id": 1752,
+              "proposition": "𝐷₁: Figúrka môže zobrať figúrku práve vtedy, keď sú rozdielnej farby a tá prvá sa môže posunúť tam, kde tá druhá stojí.",
+              "solution": null
+            },
+            {
+              "proposition_id": 1753,
+              "proposition": "𝐷₂: Kráľ je v šachu, ak a iba ak ho môže nejaká figúrka zobrať.",
+              "solution": null
+            },
+            {
+              "proposition_id": 1754,
+              "proposition": "𝐷₃: Kráľ je v mate vtedy a len vtedy, keď je v šachu a nemôže sa posunúť na žiadne políčko.",
+              "solution": null
+            },
+            {
+              "proposition_id": 1755,
+              "proposition": "𝐷₄: Kráľ je v pate, keď nie je v šachu a zároveň sa žiadna figúrka jeho farby nemôže posunúť na žiadne políčko. Inak v pate nie je.",
+              "solution": null
+            }
+          ]
+        },
+        "exerciseId": 43
+      },
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    }
+  },
+  "cellsOrder": [
+    1,
+    3,
+    60,
+    5,
+    44,
+    49,
+    45,
+    50,
+    7,
+    38,
+    36,
+    35,
+    37,
+    39,
+    41,
+    42,
+    43,
+    9,
+    10
+  ],
+  "settings": {
+    "katexMacros": "\\newcommand{\\DeclareMathOperator}[2]{\\newcommand{#1}{\\mathop{\\mathrm{#2}}}}\n\n%% General math\n\n% Domain and range\n\\DeclareMathOperator{\\dom}{dom}\n\\DeclareMathOperator{\\rng}{rng}\n\n% Powerset\n\\newcommand\\powerset[1]{\\mathcal{P}(#1)}\n\n% Cardinality\n\\newcommand{\\card}[1]{\\lvert#1\\rvert}\n\n% Numbers\n\\newcommand{\\Nat}{\\mathbb{N}}\n\n% Operations\n\\newcommand{\\TIMES}{\\cdot}\n\n\n% Meta syntax %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n\\DeclareMathOperator{\\arity}{ar}\n\\newcommand{\\Lang}{\\mathcal{L}}\n\\newcommand{\\Vars}{\\mathcal{V}_{\\Lang}}\n\\newcommand{\\Consts}{\\mathcal{C}_{\\Lang}}\n\\newcommand{\\Preds}{\\mathcal{P}_{\\Lang}}\n\\newcommand{\\Funcs}{\\mathcal{F}_{\\Lang}}\n\\newcommand{\\Terms}{\\mathcal{T}_{\\Lang}}\n\\newcommand{\\Atoms}{\\mathcal{A}_{\\Lang}}\n\\newcommand{\\Forms}{\\mathcal{E}_{\\Lang}}\n\\newcommand{\\PAtoms}{\\mathcal{PA}_{\\Lang}}\n\\newcommand{\\PForms}{\\mathcal{PE}_{\\Lang}}\n\n% Equality axioms\n\\newcommand{\\Eq}{\\mathrm{Eq}}\n\n% Syntactic transformation\n\\newcommand{\\transform}{\\rightsquigarrow}\n\n% Various syntactic functions\n\\DeclareMathOperator{\\vars}{vars}\n\\DeclareMathOperator{\\atoms}{atoms}\n\\DeclareMathOperator{\\acnt}{acnt}\n\\DeclareMathOperator{\\termVars}{termVars}\n\\DeclareMathOperator{\\free}{free}\n\\DeclareMathOperator{\\ground}{ground}\n\\DeclareMathOperator{\\mgu}{mgu}\n\\DeclareMathOperator{\\vcount}{vcount}\n\\DeclareMathOperator{\\acount}{acount}\n\\DeclareMathOperator{\\ccount}{ccount}\n\\DeclareMathOperator{\\pcount}{pcount}\n\\DeclareMathOperator{\\ncount}{ncount}\n\\DeclareMathOperator{\\cjcount}{cjcount}\n\\DeclareMathOperator{\\bccount}{bccount}\n\\DeclareMathOperator{\\lpcount}{lpcount}\n\\DeclareMathOperator{\\rpcount}{rpcount}\n\\DeclareMathOperator{\\subfs}{subfs}\n\\DeclareMathOperator{\\cons}{cons}\n\\DeclareMathOperator{\\nnf}{nnf}\n\n\n% Concrete syntax %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n% Connectives\n\n\\newcommand{\\nrarr}{\\nrightarrow}\n\\newcommand{\\limpl}{\\rarr}\n\\newcommand{\\nlimpl}{\\nrarr}\n\\newcommand{\\lequiv}{\\lrarr}\n\\newcommand{\\bigland}{\\bigwedge}\n\\newcommand{\\biglor}{\\bigvee}\n\\newcommand{\\lnand}{\\mathbin{\\uparrow}}\n\\newcommand{\\lnor}{\\mathbin{\\downarrow}}\n\\newcommand{\\lxor}{\\veebar}\n\\newcommand{\\landnot}{\\nrightarrow}\n\\newcommand{\\emptyclause}{\\Box}\n\\newcommand{\\quant}[2]{\\mathop{#1#2}\\nolimits}\n\\newcommand{\\A}{\\quant\\forall}\n\\newcommand{\\E}{\\quant\\exists}\n\n% Symbols\n\\newcommand{\\sym}[1]{\\text{\\textsf{#1}}}\n\\newcommand{\\asym}[2]{\\text{\\textsf{#2}$^#1$}}\n\\newcommand{\\var}[1]{\\text{\\textsf{\\textit{#1}}}}\n\\newcommand\\vk{\\var{k}}\n\\newcommand\\vl{\\var{l}}\n\\newcommand\\vm{\\var{m}}\n\\newcommand\\vn{\\var{n}}\n\\newcommand\\vo{\\var{o}}\n\\newcommand\\vp{\\var{p}}\n\\newcommand\\vq{\\var{q}}\n\\newcommand\\vr{\\var{r}}\n\\newcommand\\vs{\\var{s}}\n\\newcommand\\vt{\\var{t}}\n\\newcommand\\vu{\\var{u}}\n\\newcommand\\vv{\\var{v}}\n\\newcommand\\vw{\\var{w}}\n\\newcommand\\vx{\\var{x}}\n\\newcommand\\vy{\\var{y}}\n\\newcommand\\vz{\\var{z}}\n\n\n% Semantics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n% General\n\\providecommand{\\nmodels}\n    {\\mathrel{\\mkern1.5mu{\\not}\\mkern-1.5mu}\\models}\n\\providecommand{\\Equiv}{\\mathrel{\\Leftrightarrow}}\n\\renewcommand{\\Equiv}{\\mathrel{\\Leftrightarrow}}\n\\newcommand{\\entails}{\\vDash}\n\\newcommand{\\nentails}{\\nvDash}\n\n% Propositional\n\\newcommand{\\pmodels}{\\models_{\\mathrm{p}}}\n\\newcommand{\\npmodels}{\\nmodels_{\\mathrm{p}}}\n\\newcommand{\\pEquiv}{\\Equiv_{\\mathrm{p}}}\n\\newcommand{\\pentails}{\\entails_{\\mathrm{p}}}\n\\newcommand{\\npentails}{\\nentails_{\\mathrm{p}}}\n\n% First-order\n\\newcommand{\\Struct}{\\mathcal{M}}\n\\newcommand{\\InStruct}{^{\\mathcal{M}}}\n\n\\newcommand{\\Tabl}{\\mathcal{T}}\n\n\\newcommand\\sign[1]{\\mathop{\\text{\\textsf{\\textbf{#1}}}}\\nolimits}"
+  }
+}
