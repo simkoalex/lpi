@@ -278,6 +278,138 @@
         "ids": [],
         "entities": {}
       }
+    },
+    "65": {
+      "id": 65,
+      "type": "tableauEditor",
+      "data": {
+        "type": "assumption",
+        "node": {
+          "id": 1,
+          "value": "T ∀x ∀y ( ∀z ( in(z, x) ↔ in(z, y) ) → x ≐ y )",
+          "references": []
+        },
+        "child": {
+          "type": "assumption",
+          "node": {
+            "id": 2,
+            "value": "T ∀x ∀y ( subseteq(x, y) ↔ ∀z ( in(z, x) → in(z, y) ) )",
+            "references": []
+          },
+          "child": {
+            "type": "assumption",
+            "node": {
+              "id": 3,
+              "value": "T ∀z ¬ in(z, empty)",
+              "references": []
+            },
+            "child": {
+              "type": "assumption",
+              "node": {
+                "id": 4,
+                "value": "T ∀x ∀y ∀z ( in(z, inter(x, y)) ↔ ( in(z, x) ∧ in(z, y) ) )",
+                "references": []
+              },
+              "child": {
+                "type": "assumption",
+                "node": {
+                  "id": 5,
+                  "value": "T ∀x ∀y ∀z ( in(z, union(x, y)) ↔ ( in(z, x) ∨ in(z, y) ) )",
+                  "references": []
+                },
+                "child": {
+                  "type": "assumption",
+                  "node": {
+                    "id": 6,
+                    "value": "T ∀x ∀y ∀z ( in(z, diff(x, y)) ↔ ( in(z, x) ∧ ¬ in(z, y) ) )",
+                    "references": []
+                  },
+                  "child": {
+                    "type": "open",
+                    "node": {
+                      "id": 7,
+                      "value": "? ∀x ∀y ( inter(x, y) ≐ y → subseteq(y, x) )",
+                      "references": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "config": "Full FOL"
+      },
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
+    },
+    "66": {
+      "id": 66,
+      "type": "tableauEditor",
+      "data": {
+        "type": "assumption",
+        "node": {
+          "id": 1,
+          "value": "T ∀x ∀y ( ∀z ( in(z, x) ↔ in(z, y) ) → x ≐ y )",
+          "references": []
+        },
+        "child": {
+          "type": "assumption",
+          "node": {
+            "id": 2,
+            "value": "T ∀x ∀y ( subseteq(x, y) ↔ ∀z ( in(z, x) → in(z, y) ) )",
+            "references": []
+          },
+          "child": {
+            "type": "assumption",
+            "node": {
+              "id": 3,
+              "value": "T ∀z ¬ in(z, empty)",
+              "references": []
+            },
+            "child": {
+              "type": "assumption",
+              "node": {
+                "id": 4,
+                "value": "T ∀x ∀y ∀z ( in(z, inter(x, y)) ↔ ( in(z, x) ∧ in(z, y) ) )",
+                "references": []
+              },
+              "child": {
+                "type": "assumption",
+                "node": {
+                  "id": 5,
+                  "value": "T ∀x ∀y ∀z ( in(z, union(x, y)) ↔ ( in(z, x) ∨ in(z, y) ) )",
+                  "references": []
+                },
+                "child": {
+                  "type": "assumption",
+                  "node": {
+                    "id": 6,
+                    "value": "T ∀x ∀y ∀z ( in(z, diff(x, y)) ↔ ( in(z, x) ∧ ¬ in(z, y) ) )",
+                    "references": []
+                  },
+                  "child": {
+                    "type": "open",
+                    "node": {
+                      "id": 7,
+                      "value": "? ∀x ∀y ∀z subseteq(inter(x,union(y,z)), union(inter(x,y),inter(x,z)))",
+                      "references": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "config": "Full FOL"
+      },
+      "idCounter": 0,
+      "comments": {
+        "ids": [],
+        "entities": {}
+      }
     }
   },
   "cellsOrder": [
@@ -291,6 +423,8 @@
     56,
     60,
     64,
+    65,
+    66,
     63,
     43,
     47,
