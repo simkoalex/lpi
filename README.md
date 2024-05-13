@@ -39,6 +39,7 @@ riešte vo svojom repozitári v aplikácii
 | 11 | [Korektnosť tabiel. Explicitné definície. Unifikácia](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr10.pdf) | |
 | 12 | [Rezolvencia](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr11.pdf) | [Vlk, koza, kapusta](prakticke/pu11) |
 | | | bonus: [Agatha](prakticke/bonus01) |
+| 13 | [Nerozhodnuteľnosť a neúplnosť](https://fmfi-uk-1-ain-412.github.io/lpi/prednasky/pr12.pdf) | | |
 
 Návody a dokumenty
 ------------------
