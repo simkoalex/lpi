@@ -274,15 +274,28 @@
               "references": []
             },
             "child": {
-              "type": "open",
+              "type": "gamma",
               "node": {
                 "id": 4,
-                "value": "F ",
-                "references": []
+                "value": "F f(g(o)) = o",
+                "references": [
+                  "3"
+                ]
+              },
+              "child": {
+                "type": "open",
+                "node": {
+                  "id": 5,
+                  "value": "T \\exists x o = f(x)",
+                  "references": []
+                }
+              },
+              "substitution": {
+                "str": ""
               }
             },
             "substitution": {
-              "str": ""
+              "str": "x->o"
             }
           }
         },
