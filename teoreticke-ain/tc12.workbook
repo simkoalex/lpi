@@ -283,15 +283,28 @@
                 ]
               },
               "child": {
-                "type": "open",
+                "type": "delta",
                 "node": {
                   "id": 5,
                   "value": "T \\exists x o = f(x)",
-                  "references": []
+                  "references": [
+                    "2"
+                  ]
+                },
+                "child": {
+                  "type": "open",
+                  "node": {
+                    "id": 6,
+                    "value": "T o = f(k)",
+                    "references": []
+                  }
+                },
+                "substitution": {
+                  "str": ""
                 }
               },
               "substitution": {
-                "str": ""
+                "str": "y->o"
               }
             },
             "substitution": {
