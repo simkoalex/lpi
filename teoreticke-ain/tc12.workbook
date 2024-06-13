@@ -260,14 +260,33 @@
           "references": []
         },
         "child": {
-          "type": "open",
+          "type": "assumption",
           "node": {
             "id": 2,
             "value": "T \\forall y \\exists x y = f(x)",
             "references": []
+          },
+          "child": {
+            "type": "delta",
+            "node": {
+              "id": 3,
+              "value": "F \\forall x f(g(x)) = x",
+              "references": []
+            },
+            "child": {
+              "type": "open",
+              "node": {
+                "id": 4,
+                "value": "F ",
+                "references": []
+              }
+            },
+            "substitution": {
+              "str": ""
+            }
           }
         },
-        "config": "Basic propositional"
+        "config": "Full FOL"
       },
       "idCounter": 0,
       "comments": {
