@@ -256,14 +256,14 @@
         "type": "assumption",
         "node": {
           "id": 1,
-          "value": "T \\for g(f(x)) = x",
+          "value": "T \\forall x g(f(x)) = x",
           "references": []
         },
         "child": {
           "type": "open",
           "node": {
             "id": 2,
-            "value": "T \\all \\exists ",
+            "value": "T \\forall y \\exists x y = f(x)",
             "references": []
           }
         },
