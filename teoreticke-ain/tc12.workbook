@@ -252,7 +252,23 @@
     "40": {
       "id": 40,
       "type": "tableauEditor",
-      "data": null,
+      "data": {
+        "type": "assumption",
+        "node": {
+          "id": 1,
+          "value": "T \\all  g(f(x)) = x",
+          "references": []
+        },
+        "child": {
+          "type": "open",
+          "node": {
+            "id": 2,
+            "value": "T \\all \\exists ",
+            "references": []
+          }
+        },
+        "config": "Basic propositional"
+      },
       "idCounter": 0,
       "comments": {
         "ids": [],
