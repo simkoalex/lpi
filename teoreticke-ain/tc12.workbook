@@ -256,7 +256,7 @@
         "type": "assumption",
         "node": {
           "id": 1,
-          "value": "T \\all x g(f(x)) = x",
+          "value": "T \\for g(f(x)) = x",
           "references": []
         },
         "child": {
