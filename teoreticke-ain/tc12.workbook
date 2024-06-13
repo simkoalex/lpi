@@ -317,14 +317,25 @@
                         "references": []
                       },
                       "child": {
-                        "type": "open",
+                        "type": "leibnitz",
                         "node": {
                           "id": 9,
                           "value": "T f(k) = o",
                           "references": [
-                            "8",
-                            "6"
+                            "6",
+                            "8"
                           ]
+                        },
+                        "child": {
+                          "type": "open",
+                          "node": {
+                            "id": 10,
+                            "value": "T g(o) = k",
+                            "references": [
+                              "9",
+                              "7"
+                            ]
+                          }
                         }
                       }
                     }
