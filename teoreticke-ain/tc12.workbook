@@ -301,13 +301,32 @@
                     ]
                   },
                   "child": {
-                    "type": "open",
+                    "type": "refl",
                     "node": {
                       "id": 7,
                       "value": "T g(f(k)) = k",
                       "references": [
                         "1"
                       ]
+                    },
+                    "child": {
+                      "type": "leibnitz",
+                      "node": {
+                        "id": 8,
+                        "value": "T o = o",
+                        "references": []
+                      },
+                      "child": {
+                        "type": "open",
+                        "node": {
+                          "id": 9,
+                          "value": "T f(k) = o",
+                          "references": [
+                            "8",
+                            "6"
+                          ]
+                        }
+                      }
                     }
                   },
                   "substitution": {
